@@ -1,0 +1,116 @@
+Design a Web page for accepting Registration Details of a Customer
+
+Define the add Toys in a span element by applying the style (Given in Style Guide).
+Put the text  in a span element by applying the style (background color with #000080 and text color with #ff6600)
+The above element should be inside the h2 element and apply style.
+Add the below elements to the table
+Addition of toys should have following fields
+o   Toy Name
+
+o   Toy type
+
+o   Min-Age
+
+o   Max-Age
+
+o   Price
+
+o   Quantity Available in Stock
+
+o   Rental amount per day
+
+o   Submit form is a button with label “Submit Query”
+
+
+Validation
+
+·        Toys Name must be minimum of 3 characters (Use RegEx for validating)
+
+·        Toys type should be minimum of 5 characters (Use RegEx for validating)
+
+·        Price and quantity should be a number and it should be greater than “0”.
+
+·        Rental Amount should be minimum of $5
+
+·        All parameters except Min-Age and Max-Age should be a textbox,
+
+
+
+Min-Age and Max-Age should be a drop-down list and should have values between 0 and 12 ---------------------------------------------------------------------------------------
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+    <script>
+      function validate(){
+        var Tname=document.getElementById("tname").value;
+        var Ttype=document.getElementById("ttype").value;
+        var Price=document.getElementById("price").value;
+        var Qual=document.getElementById("qual").value;
+        var Amt=document.getElementById("amt").value;
+        
+        if(/^([a-zA-Z0-9_-]){3,}$/.test(Tname))
+            alert("Name Ok");
+        else 
+            alert("Name Not Ok");
+        if(/^([a-zA-Z0-9_-]){3,}$/.test(Ttype))
+            alert("Type Ok");
+        else
+            alert("Type Not Ok");
+        if(!isNan(Qual)&& Qual>0)
+            alert("Quality Ok");
+        else
+            alert("Quality Not Ok");
+        if(!isNan(Price)&& Price>0)
+            alert("Price Ok");
+        else
+            alert("Price Not Ok");
+        if(amt>=5)
+            alert("Amount Ok");
+        else
+            alert("Amount Not Ok");
+      }
+    </script>
+        <h2>
+            <span  style="backgroung-color:#000080; color:#ff6600">        
+                Add Toys
+            </span>
+        </h2>
+        <table>
+            <tr>
+                <td>Toy Name</td>
+                <td><input type="text" id="tname"></td>
+            </tr>
+             <tr>
+                <td>Toy type</td>
+                <td><input type="text" id="ttype"></td>
+            </tr>
+            <tr>
+                <td>Min-Age</td>
+                <td><input type="text" id="minage"></td>
+            </tr>
+            <tr>
+                <td>Max-Age</td>
+                <td><input type="text" id="maxage"></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="text" id="price"></td>
+            </tr>
+            <tr>
+                <td>Quantity Available in Stock</td>
+                <td><input type="text" id="qual"></td>
+            </tr>
+            <tr>
+                <td>Rental amount per day</td>
+                <td><input type="text" id="amt"></td>
+            </tr>
+            <tr>
+                <td><input type="button" id="sub" value="Submit Query" onClick="validate()"></td>
+            </tr>
+        </table>
+        
+    </body>
