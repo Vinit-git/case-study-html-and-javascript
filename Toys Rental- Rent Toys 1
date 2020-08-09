@@ -1,0 +1,138 @@
+DESCRIPTION
+Design a Web page for customers for renting the page
+
+Use HTML Table to align the form elements
+
+·        Define the Rent Toys in a span element by applying the style
+
+Put the text  in a span element by applying the style (background color with #000080 and text color with #ff6600)
+·        The above element should be inside the h2 element and apply style.
+
+Create a form which accepts below fields
+
+·        Toy Name (Drop Down)
+
+·        Customer Name  
+
+·        Rent Start Date
+
+·        Rent Tenure
+
+·        Number of Toys available
+
+·        Enter number of toys (Number)
+
+·        Submit form is a button with label “Submit Query”
+
+Validations
+
+·        “Customer Name” is input text box should be minimum of 5 characters and should take only characters and space (Use OnBlur event)
+
+·        “Rent Start Date” is input date field, and the date selected should be current or future date
+
+·        “Rent Tenure” is number field should not accept more than 30, when entered more than 30 display a text “We cannot rent over 30 days SORRY!!!”
+
+·        “Number of Toys available” (to be hardcoded in JavaScript function which will be call at onLoad event, for all the toys the max value available is 5)
+
+
+
+Additional Note:
+
+·        Load 10 Toys in the field Toy Name (Drop Down), namely [Bicycle, Train, Doll, Teddy Bear, Kite, Airplane, Model Car, Art Farm, Lego Mind storms, Speak and Spell]
+
+·        When User clicks on submit, do the following checks
+
+        i.  Show the total Rental cost which is cost of the toy(s) and number of days the toy is opted for ex: 100 (cost per day) x Qty x 8 days = 800. When user clicks on confirm box as “Yes”, then a message to be shown “Thank you for order Mr/Ms/Mrs: <Customer Name>” 
+        
+        
+        -----------------------------------------------------------------------------------------------------------------------
+        <!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        </title>
+    </head>
+    <body onload="Avaibility()">
+        <script>
+            Function checkname(){
+                name = document.getElementById("name").value;
+                if(/^[A-Z][A-Z\s]*$/.test(name))
+                    alert("Name Ok");
+                else
+                    alert("only 5 character are allowed")
+            }
+        </script>
+        
+        <script>
+            Function showrent(){
+                    name = document.getElementById("name").value;
+                    days=parseInt(document.getElementById("rent").value);
+                    rent_amt=100;
+                    qty =parseInt(document.getElementById("total").value);
+                    rent=100*days*qty;
+                    val = confirm("Rent for Toys Selected: "+rent);
+                    if(val==true){
+                        alert("Thank you for your order"+name);
+                    }
+            }
+        </script>
+        
+        <script>
+            function checkrent(){
+                rent=document.getElementById("rent").value;
+                if(rent > 30){
+                    alert("We can not rent over 30 days Sorry!!!");
+                }
+                
+            }
+        </script>
+        <h2><span style="background-color: #000080; color:#ff6600;">Rent Toys</span></h2>
+        
+            <table>
+                <tbody>
+                <tr>
+                    <td>Toy Name</td>
+                    <td>
+                        <select>
+                            <option>Bicycle</option>
+                            <option>Train</option>
+                            <option>Doll</option>
+                            <option>Teddy Bear</option>
+                            <option>Kite</option>
+                            <option>Airplane</option>
+                            <option>Model Car</option>
+                            <option>Art Farm</option>
+                            <option>Lego Mind Storm</option>
+                            <option>Speak and Spell</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Customer Name</td>
+                    <td><input type="text" id="name" onblur="checkname()"/></td>
+                </tr>
+                <tr>
+                    <td>Rent Start Date</td>
+                    <td><input type="text" id="date" placeholder="yyyy/mm/dd"/></td>
+                </tr>
+                <tr>
+                    <td>Rent Tenure</td>
+                    <td><input type="text" id="rent" onblur="checkrent()"></td>
+                </tr>
+                <tr>
+                    <td>Number of Toys Available</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Enter number of toys</td>
+                    <td><input type="text" id="total"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><button onclick="showrent()" value="Submit Query">Submit Query</button></td>
+                </tr>
+                </tbody>
+            </table>
+       
+    </body>
+</html>
