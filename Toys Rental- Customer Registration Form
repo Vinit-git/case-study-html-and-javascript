@@ -1,0 +1,114 @@
+Design a Web page for accepting Registration Details of a Customer
+
+1.      Customer Registration Form element should be inside the h1 tag
+
+customer registration form should have following fields
+
+Use HTML Table to align the form elements
+
+Customer Name
+Password
+Confirm Password
+Mobile Number
+Gender (Radio button)
+Date of Birth (Input type Date)
+City (Dropdown list [Bengaluru, Chennai, Delhi, Mumbai])
+Country (Dropdown List [INDIA, USA, GERMANY, FRANCE], default INDIA)
+Submit form is a button with label “Submit”
+Validation
+
+·        User Name must be minimum of six character
+
+·        Password must be alphanumerical and with the special character
+
+·        Password and confirm password must be same
+
+·        Mobile number must be a valid 10-digit number and the first digit should be between 6 to 9
+--------------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+        </title>
+        <script src="./index.js" defer></script>
+    </head>
+    <body>
+        <h1>Customer Registration Form</h1>
+        <table>
+            <tr>
+                <td>Customer Name</td>
+                <td><input type="text" id="name"><td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type="password" id="pass">
+            </tr>
+            <tr>
+                <td>Confirm Password</td>
+                <td><input type="password" id="cpass"></td>
+            </tr>
+            <tr>
+                <td>Mobile Number</td>
+                <td><input type="text" id="number"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+            </tr>
+            <tr>
+                <td><input type="radio" value="Male">Male</td>
+                <td><input type="radio" value="Male">Female</td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td> <select>
+                            <option>Bengaluru</option>
+                            <option>Chennai</option>
+                            <option>Delhi</option>
+                            <option>Mumbai</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td> <select>
+                            <option>India</option>
+                            <option>USA</option>
+                            <option>Germany</option>
+                            <option>France</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="Submit" ></td>
+            </tr>
+        </table>
+       
+    </body>
+</html>
+
+JAVASCRIPT FILE
+
+    function validate(){
+            name1 = document.getElementById("name").value;
+            if(/[a-zA-Z]{6,}/.test(name1)){
+                alert("Name Ok");}
+            else
+                alert("Name Should be min six character");
+            
+            pass1= document.getElementById("pass").value;
+            cpass1=document.getElementById("cpass").value;
+            if(pass1 != cpass1){
+                alert("Pass not match");
+                document.getElementById("cpass").value="";
+            }
+            number1=document.getElementById("number").value;
+            var valid =["6","7","8","9"];
+            if(/[0-9]{10,10}/.test(number1)&& valid.include(number1.substring(0,10))){
+                alert("valid");
+            }
+            else
+                alert("not valid");
+            
+          }
+ 
+
